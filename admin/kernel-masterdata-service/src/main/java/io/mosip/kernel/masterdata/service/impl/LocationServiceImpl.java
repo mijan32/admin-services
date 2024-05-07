@@ -508,8 +508,8 @@ public class LocationServiceImpl implements LocationService {
 	 * @see io.mosip.kernel.masterdata.service.LocationService#
 	 * getImmediateChildrenByLocCodeAndHierarchyNameAndLangCode(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	@Cacheable(value = "locations", key = "'location'.concat('-').concat('immediate').concat('-').concat(#locCode).concat('-').concat(#langCode)",
-			condition = "#locCode != null && #langCode != null")
+	@Cacheable(value = "locations", key = "'location'.concat('-').concat('immediate').concat('-').concat(#locCode).concat('-').concat(#hierarchyName).concat('-').concat(#langCode)",
+			condition = "#locCode != null && #hierarchyName != null && #langCode != null")
 	@Override
 	public LocationResponseDto getImmediateChildrenByLocCodeAndHierarchyNameAndLangCode(String locCode, String hierarchyName, String langCode) {
 		List<Location> locationlist = null;
