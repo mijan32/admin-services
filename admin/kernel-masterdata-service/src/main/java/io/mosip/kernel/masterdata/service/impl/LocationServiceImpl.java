@@ -502,6 +502,35 @@ public class LocationServiceImpl implements LocationService {
 		return locationHierarchyResponseDto;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see io.mosip.kernel.masterdata.service.LocationService#
+	 * getImmediateChildrenByLocCodeAndHierarchyNameAndLangCode(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Cacheable(value = "locations", key = "'location'.concat('-').concat('immediate').concat('-').concat(#locCode).concat('-').concat(#langCode)",
+			condition = "#locCode != null && #langCode != null")
+	@Override
+	public LocationResponseDto getImmediateChildrenByLocCodeAndHierarchyNameAndLangCode(String locCode, String hierarchyName, String langCode) {
+		List<Location> locationlist = null;
+		LocationResponseDto locationHierarchyResponseDto = new LocationResponseDto();
+		try {
+			locationlist = locationRepository.findLocationHierarchyByParentLocCodeAndHierarchyNameAndLanguageCode(locCode, hierarchyName, langCode);
+
+		} catch (DataAccessException | DataAccessLayerException e) {
+			throw new MasterDataServiceException(LocationErrorCode.LOCATION_FETCH_EXCEPTION.getErrorCode(),
+					LocationErrorCode.LOCATION_FETCH_EXCEPTION.getErrorMessage() + ExceptionUtils.parseException(e));
+		}
+
+		if (locationlist.isEmpty()) {
+			throw new DataNotFoundException(LocationErrorCode.LOCATION_NOT_FOUND_EXCEPTION.getErrorCode(),
+					LocationErrorCode.LOCATION_NOT_FOUND_EXCEPTION.getErrorMessage());
+		}
+		List<LocationDto> locationDtoList = MapperUtils.mapAll(locationlist, LocationDto.class);
+		locationHierarchyResponseDto.setLocations(locationDtoList);
+		return locationHierarchyResponseDto;
+	}
+
 	/**
 	 * fetches location hierarchy details from database based on location code and
 	 * language code

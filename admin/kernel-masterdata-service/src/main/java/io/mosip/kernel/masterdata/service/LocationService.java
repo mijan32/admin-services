@@ -21,6 +21,7 @@ import io.mosip.kernel.masterdata.dto.response.LocationPutResponseDto;
 import io.mosip.kernel.masterdata.dto.response.LocationSearchDto;
 import io.mosip.kernel.masterdata.dto.response.PageResponseDto;
 import io.mosip.kernel.masterdata.entity.Location;
+import org.springframework.cache.annotation.Cacheable;
 
 /**
  * Interface class from which various implementation can be performed
@@ -82,6 +83,16 @@ public interface LocationService {
 	 * @return {@link LocationResponseDto}
 	 */
 	public LocationResponseDto getImmediateChildrenByLocCodeAndLangCode(String locCode, String langCode);
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @param locCode  - location code
+	 * @param hierarchyName - hierarchyName
+	 * @param langCode - language code
+	 * @return {@link LocationResponseDto}
+	 */
+	LocationResponseDto getImmediateChildrenByLocCodeAndHierarchyNameAndLangCode(String locCode, String hierarchyName, String langCode);
 
 	/**
 	 * 
