@@ -36,22 +36,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--		<dependency>-->
-		<!--			<groupId>org.apache.logging.log4j</groupId>-->
-		<!--			<artifactId>log4j-api</artifactId>-->
-		<!--			<version>2.17.2</version>-->
-		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.13.Final</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-		<!--				<dependency>-->
-		<!--					<groupId>com.fasterxml.jackson.core</groupId>-->
-		<!--					<artifactId>jackson-databind</artifactId>-->
-		<!--					<version>2.17.1</version>-->
-		<!--				</dependency>-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -83,8 +72,6 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.10.0</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
@@ -235,12 +222,6 @@
 			<artifactId>kernel-cbeffutil-api</artifactId>
 			<version>${kernel.version}</version>
 		</dependency>
-		<!--		<dependency>-->
-		<!--			<groupId>io.mosip.biometric.util</groupId>-->
-		<!--			<artifactId>biometrics-util</artifactId>-->
-		<!--			<version>1.2.0.2</version>-->
-		<!--		</dependency>-->
-
 		<dependency>
 			<groupId>io.mosip.biometric.util</groupId>
 			<artifactId>biometrics-util</artifactId>
